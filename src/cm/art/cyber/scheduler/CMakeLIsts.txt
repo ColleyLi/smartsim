@@ -1,0 +1,24 @@
+add_library(cm_art_scheduler SHARED
+    ./scheduler.cc
+    ./scheduler_factory.cc
+    ./processor.cc
+    ./processor_context.cc
+    ./policy/scheduler_classic.cc
+    ./policy/scheduler_choreography.cc
+    ./policy/classic_context.cc
+    ./policy/choreography_context.cc
+    ./common/pin_thread.cc
+)
+
+
+
+target_link_libraries(cm_art_scheduler
+    cm_art_time
+    cm_art_croutine
+	${GLOG_LIBRARIES}
+)
+
+install(TARGETS cm_art_scheduler
+        LIBRARY
+        DESTINATION lib 
+)

@@ -1,0 +1,15 @@
+add_executable(mainboard
+    ../binary.cc
+    ../init.cc
+    ./mainboard.cc 
+    ./module_argument.cc
+    ./module_controller.cc
+)
+
+target_link_libraries(mainboard
+    cm_art_core
+)
+
+install(TARGETS mainboard
+        LIBRARY DESTINATION bin 
+)

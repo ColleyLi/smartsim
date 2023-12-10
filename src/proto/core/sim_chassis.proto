@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+package smartsim.core;
+
+import "proto/common/header.proto";
+
+message SimChassis {
+  enum DrivingMode {
+    COMPLETE_MANUAL            = 0; // human drive
+    COMPLETE_AUTO_DRIVE        = 1;
+    AUTO_STEER_ONLY            = 2; // only steer
+    AUTO_SPEED_ONLY_SPEED_ONLY = 3;//include throttle and brake
+    // security mode when manual intervention happens, only response statusEMERGENCY_MODE = 4;
+  }
+  enum ErrorCode {
+    NO_ERROR               = 0;
+    // car chassis report error, like steer, brake, throttle, gear fault;
+    CHASSIS_ERROR          = 1
+
+    // classify the types of the car chassis errors
+    CHASSIS_ERROR_ON_STEER = 2;
+    CHASSIS_ERROR_ON_ACCEL = 3;
+    CHASSIS_ERROR_ON_SPEED = 4;
+  }
+
+  enum GearPosition {
+    GEAR_NEUTRAL = 0;
+    GEAR_DRIVE   = 1;
+    GEAR_REVERSE = 2;
+    GEAR_PARKING = 3;
+    GEAR_LOW     = 4;
+    GEAR_INVALID = 5;
+    GEAR_NONE    = 6;
+  }
+
+  // Vehicle Speed in meters per second.
+  optional float                   speed_mps         = 3 [default = nan];
+
+  // Real steering angle in [rad]
+  optional float                   steering_angle    = 4 [default = nan];
+  optional float                   acceleration_x    = 5 [default = nan];
+  optional GearPosition            gear_location     = 6 [default = GEAR_DRIVE];
+
+  //chassis also needs it own sending timestamp
+  optional smartsim.common.Header header            = 7;
+  optional DrivingMode             driving_mode      = 8 [default = COMPLETE_AUTO_DRIVE];
+  optional ErrorCode               error_code        = 9 [default = NO_ERROR];
+
+  // takeover
+  optional bool                    steering_takeover = 10;
+  optional bool                    driving_takeover  = 11;
+  optional bool                    braking_takeover  = 12;
+}

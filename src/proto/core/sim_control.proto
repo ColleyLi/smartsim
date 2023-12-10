@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package smartsim.core;
+
+import "proto/common/header.proto";
+
+message SimControl {
+  optional smartsim.common.Header header            = 1;
+  optional double                  acceleration      = 2 [default = nan];
+  optional double                  steering_angle    = 3 [default = nan];
+  optional double                  elec_motor_torque = 4 [default = nan];
+  optional double                  pcon_brake        = 5 [default = nan];
+}

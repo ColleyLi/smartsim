@@ -1,0 +1,4 @@
+topic_name: "/smartsim/carsim/chassis"
+bind_port: 8900
+proto_name: "carsim_canbus_chassis"
+enable_timeout: false

@@ -1,0 +1,7 @@
+add_library(cm_art_message SHARED
+    ./protobuf_factory.cc
+)
+
+install(TARGETS cm_art_message
+        LIBRARY DESTINATION lib 
+)
