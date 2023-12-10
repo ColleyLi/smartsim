@@ -1,4 +1,0 @@
-topic_name: "/smartsim/carsim/control_command"
-remote_ip: "10.79.113.205"
-remote_port: 8500
-proto_name: "carsim_control_cmd"

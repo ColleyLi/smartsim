@@ -1,4 +1,0 @@
-topic_name: "/smartsim/vtd/perception_objects"
-bind_port: 8902
-proto_name: "vtd_perception_obtacles"
-enable_timeout: false

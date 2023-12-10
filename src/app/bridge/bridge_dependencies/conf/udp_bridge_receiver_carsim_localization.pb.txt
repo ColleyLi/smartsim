@@ -1,4 +1,0 @@
-topic_name: "/smartsim/carsim/localization"
-bind_port: 8901
-proto_name: "carsim_localization"
-enable_timeout: false
